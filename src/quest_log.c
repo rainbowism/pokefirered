@@ -1183,7 +1183,7 @@ static void Task_EndQuestLog(u8 taskId)
         gTextFlags.autoScroll = FALSE;
         gGlobalFieldTintMode = QL_TINT_NONE;
         DisableWildEncounters(FALSE);
-        gHelpSystemEnabled = TRUE;
+        gHelpSystemEnabled = FALSE;
         DestroyTask(taskId);
         break;
     }

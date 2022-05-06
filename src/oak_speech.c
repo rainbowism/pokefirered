@@ -513,7 +513,7 @@ static void Task_OaksSpeech1(u8 taskId)
         ResetSpriteData();
         FreeAllSpritePalettes();
         ResetTempTileDataBuffers();
-        SetHelpContext(HELPCONTEXT_NEW_GAME);
+        // SetHelpContext(HELPCONTEXT_NEW_GAME);
         break;
     case 1:
         sOakSpeechResources = AllocZeroed(sizeof(*sOakSpeechResources));
@@ -567,9 +567,9 @@ static void Task_OaksSpeech1(u8 taskId)
         FillBgTilemapBufferRect_Palette0(1, 0xD00F,  0,  0, 30, 2);
         FillBgTilemapBufferRect_Palette0(1, 0xD002,  0,  2, 30, 1);
         FillBgTilemapBufferRect_Palette0(1, 0xD00E,  0, 19, 30, 1);
-        CreateHelpDocsPage1();
+        // CreateHelpDocsPage1();
         gPaletteFade.bufferTransferDisabled = FALSE;
-        gTasks[taskId].data[5] = CreateTextCursorSpriteForOakSpeech(0, 0xE6, 0x95, 0, 0);
+        // gTasks[taskId].data[5] = CreateTextCursorSpriteForOakSpeech(0, 0xE6, 0x95, 0, 0);
         BlendPalettes(0xFFFFFFFF, 0x10, 0x00);
         break;
     case 10:
@@ -579,7 +579,7 @@ static void Task_OaksSpeech1(u8 taskId)
         ShowBg(1);
         SetVBlankCallback(VBlankCB_NewGameOaksSpeech);
         PlayBGM(MUS_NEW_GAME_INSTRUCT);
-        gTasks[taskId].func = Task_OaksSpeech2;
+        gTasks[taskId].func = Task_OakSpeech9;
         gMain.state = 0;
         return;
     }
