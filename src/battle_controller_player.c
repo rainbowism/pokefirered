@@ -1408,24 +1408,32 @@ static void MoveSelectionDisplayMoveType(void)
     *txtPtr++ = 1;
     txtPtr = StringCopy(txtPtr, gUnknown_83FE770);
     // render hidden power type
-    if (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].effect == 0x87 /* EFFECT_HIDDEN_POWER */)
-    {
-        u8 moveType;
-        s32 typeBits  = ((gBattleMons[gActiveBattler].hpIV & 1) << 0)
-            | ((gBattleMons[gActiveBattler].attackIV & 1) << 1)
-            | ((gBattleMons[gActiveBattler].defenseIV & 1) << 2)
-            | ((gBattleMons[gActiveBattler].speedIV & 1) << 3)
-            | ((gBattleMons[gActiveBattler].spAttackIV & 1) << 4)
-            | ((gBattleMons[gActiveBattler].spDefenseIV & 1) << 5);
-        moveType = (15 * typeBits) / 63 + 1;
-        if (moveType >= TYPE_MYSTERY)
-            ++moveType;
-        StringCopy(txtPtr, gTypeNames[moveType]);
-    }
-    else
-    {
+    // if (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].effect == 0x87 /* EFFECT_HIDDEN_POWER */)
+    // {
+    //     &gPlayerParty[gBattlerPartyIndexes[gActiveBattler]]
+    //     u8 moveType;
+    //     s32 typeBits  = ((GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_HP_IV) & 1) << 0)
+    //         | ((GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_ATK_IV) & 1) << 1)
+    //         | ((GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_DEF_IV) & 1) << 2)
+    //         | ((GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_SPEED_IV) & 1) << 3)
+    //         | ((GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_SPATK_IV) & 1) << 4)
+    //         | ((GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_SPDEF_IV) & 1) << 5);
+    //     s32 typeBits  = ((gBattleMons[gActiveBattler].hpIV & 1) << 0)
+    //         | ((gBattleMons[gActiveBattler].attackIV & 1) << 1)
+    //         | ((gBattleMons[gActiveBattler].defenseIV & 1) << 2)
+    //         | ((gBattleMons[gActiveBattler].speedIV & 1) << 3)
+    //         | ((gBattleMons[gActiveBattler].spAttackIV & 1) << 4)
+    //         | ((gBattleMons[gActiveBattler].spDefenseIV & 1) << 5);
+    //     moveType = (15 * typeBits) / 63 + 1;
+    //     if (moveType >= TYPE_MYSTERY)
+    //         ++moveType;
+    //     StringCopy(txtPtr, gTypeNames[moveType]);
+    // }
+    // else
+    // {
         StringCopy(txtPtr, gTypeNames[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].type]);
-    }
+    // }
+    
     BattlePutTextOnWindow(gDisplayedStringBattle, 8);
 }
 
