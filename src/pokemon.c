@@ -2229,6 +2229,8 @@ u16 GiveMoveToBattleMon(struct BattlePokemon *mon, u16 move)
 
 void SetMonMoveSlot(struct Pokemon *mon, u16 move, u8 slot)
 {
+    if (move == MOVE_SPORE)
+        move = MOVE_SLEEP_POWDER;
     SetMonData(mon, MON_DATA_MOVE1 + slot, &move);
     SetMonData(mon, MON_DATA_PP1 + slot, &gBattleMoves[move].pp);
 }
