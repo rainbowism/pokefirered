@@ -1407,7 +1407,25 @@ static void MoveSelectionDisplayMoveType(void)
     *txtPtr++ = 6;
     *txtPtr++ = 1;
     txtPtr = StringCopy(txtPtr, gUnknown_83FE770);
-    StringCopy(txtPtr, gTypeNames[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].type]);
+    // render hidden power type
+    if (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].effect == 0x87 /* EFFECT_HIDDEN_POWER */)
+    {
+        u8 moveType;
+        s32 typeBits  = ((gBattleMons[gActiveBattler].hpIV & 1) << 0)
+            | ((gBattleMons[gActiveBattler].attackIV & 1) << 1)
+            | ((gBattleMons[gActiveBattler].defenseIV & 1) << 2)
+            | ((gBattleMons[gActiveBattler].speedIV & 1) << 3)
+            | ((gBattleMons[gActiveBattler].spAttackIV & 1) << 4)
+            | ((gBattleMons[gActiveBattler].spDefenseIV & 1) << 5);
+        moveType = (15 * typeBits) / 63 + 1;
+        if (moveType >= TYPE_MYSTERY)
+            ++moveType;
+        StringCopy(txtPtr, gTypeNames[moveType]);
+    }
+    else
+    {
+        StringCopy(txtPtr, gTypeNames[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].type]);
+    }
     BattlePutTextOnWindow(gDisplayedStringBattle, 8);
 }
 

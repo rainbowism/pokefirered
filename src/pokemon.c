@@ -2157,6 +2157,8 @@ void BoxMonToMon(struct BoxPokemon *src, struct Pokemon *dest)
     value = 255;
     SetMonData(dest, MON_DATA_MAIL, &value);
     CalculateMonStats(dest);
+    value = 1;
+    SetMonData(dest, MON_DATA_HP, &value);
 }
 
 static u8 GetLevelFromMonExp(struct Pokemon *mon)
@@ -2191,6 +2193,8 @@ u16 GiveMoveToMon(struct Pokemon *mon, u16 move)
 static u16 GiveMoveToBoxMon(struct BoxPokemon *boxMon, u16 move)
 {
     s32 i;
+    if (move == MOVE_SPORE)
+        move = MOVE_SLEEP_POWDER;
     for (i = 0; i < 4; i++)
     {
         u16 existingMove = GetBoxMonData(boxMon, MON_DATA_MOVE1 + i, NULL);
@@ -3746,12 +3750,39 @@ u8 GetMonsStateToDoubles(void)
     return (aliveCount > 1) ? PLAYER_HAS_TWO_USABLE_MONS : PLAYER_HAS_ONE_USABLE_MON;
 }
 
-u8 GetAbilityBySpecies(u16 species, bool8 abilityNum)
+u8 GetAbilityBySpecies(u16 species, bool8 abilityNum, bool8 player)
 {
+    s16 bst;
+
+    if (player)
+    {
+        bst = gBaseStats[species].baseHP;
+        bst += gBaseStats[species].baseAttack;
+        bst += gBaseStats[species].baseDefense;
+        bst += gBaseStats[species].baseSpeed;
+        bst += gBaseStats[species].baseSpAttack;
+        bst += gBaseStats[species].baseSpDefense;
+        if (bst > 600)
+        {
+            gLastUsedAbility = ABILITY_TRUANT;
+            return gLastUsedAbility;
+        }
+    }
+
     if (abilityNum)
         gLastUsedAbility = gBaseStats[species].abilities[1];
     else
         gLastUsedAbility = gBaseStats[species].abilities[0];
+
+    if (player)
+    {
+        if (gLastUsedAbility == ABILITY_HUGE_POWER
+            || gLastUsedAbility == ABILITY_PURE_POWER)
+        {
+            gLastUsedAbility = ABILITY_TRUANT;
+        }
+    }
+            
 
     return gLastUsedAbility;
 }
@@ -3760,7 +3791,7 @@ u8 GetMonAbility(struct Pokemon *mon)
 {
     u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     u8 abilityNum = GetMonData(mon, MON_DATA_ABILITY_NUM, NULL);
-    return GetAbilityBySpecies(species, abilityNum);
+    return GetAbilityBySpecies(species, abilityNum, TRUE);
 }
 
 static void CreateSecretBaseEnemyParty(struct SecretBaseRecord *secretBaseRecord)
@@ -3876,6 +3907,7 @@ static void CopyPlayerPartyMonToBattleData(u8 battlerId, u8 partyIndex)
     u16* hpSwitchout;
     s32 i;
     u8 nickname[POKEMON_NAME_LENGTH * 2]; // Why is the nickname array here longer in FR/LG?
+    s16 bst;
 
     gBattleMons[battlerId].species = GetMonData(&gPlayerParty[partyIndex], MON_DATA_SPECIES, NULL);
     gBattleMons[battlerId].item = GetMonData(&gPlayerParty[partyIndex], MON_DATA_HELD_ITEM, NULL);
@@ -3910,7 +3942,7 @@ static void CopyPlayerPartyMonToBattleData(u8 battlerId, u8 partyIndex)
     gBattleMons[battlerId].otId = GetMonData(&gPlayerParty[partyIndex], MON_DATA_OT_ID, NULL);
     gBattleMons[battlerId].type1 = gBaseStats[gBattleMons[battlerId].species].type1;
     gBattleMons[battlerId].type2 = gBaseStats[gBattleMons[battlerId].species].type2;
-    gBattleMons[battlerId].ability = GetAbilityBySpecies(gBattleMons[battlerId].species, gBattleMons[battlerId].abilityNum);
+    gBattleMons[battlerId].ability = GetAbilityBySpecies(gBattleMons[battlerId].species, gBattleMons[battlerId].abilityNum, TRUE);
     GetMonData(&gPlayerParty[partyIndex], MON_DATA_NICKNAME, nickname);
     StringCopy10(gBattleMons[battlerId].nickname, nickname);
     GetMonData(&gPlayerParty[partyIndex], MON_DATA_OT_NAME, gBattleMons[battlerId].otName);

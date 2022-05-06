@@ -16,6 +16,7 @@
 #include "help_system.h"
 #include "trainer_pokemon_sprites.h"
 #include "new_menu_helpers.h"
+#include "strikes_patch.h"
 #include "constants/songs.h"
 #include "constants/game_stat.h"
 #include "constants/trainers.h"
@@ -1138,7 +1139,7 @@ static void PrintIdOnCard(void)
     u8* txtPtr;
 
     txtPtr = StringCopy(buffer, gText_TrainerCardIDNo);
-    ConvertIntToDecimalStringN(txtPtr, sTrainerCardDataPtr->trainerCard.rse.trainerId, STR_CONV_MODE_LEADING_ZEROS, 5);
+    ConvertIntToDecimalStringN(txtPtr, 20 - (GetGameStat(GAME_STAT_HEALING_USED) & 0xFFFF), STR_CONV_MODE_RIGHT_ALIGN, 5);
     AddTextPrinterParameterized3(1, sTrainerCardFontIds[1], sTrainerCardIdXPositions[sTrainerCardDataPtr->cardType], sTrainerCardIdYPositions[sTrainerCardDataPtr->cardType], sTrainerCardTextColors, TEXT_SPEED_FF, buffer);
 }
 

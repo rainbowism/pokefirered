@@ -27,6 +27,7 @@
 #include "reshow_battle_screen.h"
 #include "battle_controllers.h"
 #include "battle_interface.h"
+#include "strikes_patch.h"
 #include "constants/battle_anim.h"
 #include "constants/battle_move_effects.h"
 #include "constants/battle_script_commands.h"
@@ -3079,6 +3080,20 @@ static void atk23_getexp(void)
         {
             gBattleScripting.atk23_state = 6; // goto last case
         }
+        // check if this location has been used for catching/xp
+        else if ((gBattleTypeFlags & (BATTLE_TYPE_TRAINER | BATTLE_TYPE_POKEDUDE | BATTLE_TYPE_OLD_MAN_TUTORIAL)) == 0)
+        {
+            if (CheckUsedLocation())
+            {
+                gBattleScripting.atk23_state = 6; // goto last case
+            }
+            else
+            {
+                ++gBattleScripting.atk23_state;
+                gBattleStruct->givenExpMons |= gBitTable[gBattlerPartyIndexes[gBattlerFainted]];
+                UpdateUsedLocation();
+            }
+        }
         else
         {
             ++gBattleScripting.atk23_state;
@@ -4375,7 +4390,7 @@ static void atk4D_switchindataupdate(void)
         }
         gBattleMons[gActiveBattler].type1 = gBaseStats[gBattleMons[gActiveBattler].species].type1;
         gBattleMons[gActiveBattler].type2 = gBaseStats[gBattleMons[gActiveBattler].species].type2;
-        gBattleMons[gActiveBattler].ability = GetAbilityBySpecies(gBattleMons[gActiveBattler].species, gBattleMons[gActiveBattler].abilityNum);
+        gBattleMons[gActiveBattler].ability = GetAbilityBySpecies(gBattleMons[gActiveBattler].species, gBattleMons[gActiveBattler].abilityNum, GetBattlerSide(gActiveBattler) == B_SIDE_PLAYER);
         // check knocked off item
         i = GetBattlerSide(gActiveBattler);
         if (gWishFutureKnock.knockedOffMons[i] & gBitTable[gBattlerPartyIndexes[gActiveBattler]])
@@ -5950,7 +5965,7 @@ static void atk76_various(void)
             if (species != SPECIES_NONE
              && species != SPECIES_EGG
              && status & AILMENT_FNT
-             && GetAbilityBySpecies(species, abilityNum) != ABILITY_SOUNDPROOF)
+             && GetAbilityBySpecies(species, abilityNum, TRUE) != ABILITY_SOUNDPROOF)
                 monToCheck |= (1 << i);
         }
         if (monToCheck)
@@ -5971,7 +5986,7 @@ static void atk76_various(void)
             if (species != SPECIES_NONE
              && species != SPECIES_EGG
              && status & AILMENT_FNT
-             && GetAbilityBySpecies(species, abilityNum) != ABILITY_SOUNDPROOF)
+             && GetAbilityBySpecies(species, abilityNum, TRUE) != ABILITY_SOUNDPROOF)
                 monToCheck |= (1 << i);
         }
         if (monToCheck)
@@ -7681,7 +7696,7 @@ static void atkAE_healpartystatus(void)
                       && !(gAbsentBattlerFlags & gBitTable[gActiveBattler]))
                     ability = gBattleMons[gActiveBattler].ability;
                 else
-                    ability = GetAbilityBySpecies(species, abilityNum);
+                    ability = GetAbilityBySpecies(species, abilityNum, TRUE);
                 if (ability != ABILITY_SOUNDPROOF)
                     toHeal |= (1 << i);
             }
@@ -9014,6 +9029,14 @@ static void atkEF_handleballthrow(void)
             u32 odds;
             u8 catchRate;
 
+            // check if something's already been caught this route
+            if (CheckUsedLocation())
+            {
+                gBattleCommunication[MULTISTRING_CHOOSER] = 0;
+                gBattlescriptCurrInstr = BattleScript_ShakeBallThrow;
+                return;
+            }
+
             if (gLastUsedItem == ITEM_SAFARI_BALL)
                 catchRate = gBattleStruct->safariCatchFactor * 1275 / 100;
             else
@@ -9086,6 +9109,7 @@ static void atkEF_handleballthrow(void)
             }
             if (odds > 254) // mon caught
             {
+                UpdateUsedLocation();
                 BtlController_EmitBallThrowAnim(0, BALL_3_SHAKES_SUCCESS);
                 MarkBattlerForControllerExec(gActiveBattler);
                 gBattlescriptCurrInstr = BattleScript_SuccessBallThrow;
@@ -9108,6 +9132,7 @@ static void atkEF_handleballthrow(void)
                 MarkBattlerForControllerExec(gActiveBattler);
                 if (shakes == BALL_3_SHAKES_SUCCESS) // mon caught, copy of the code above
                 {
+                    UpdateUsedLocation();
                     gBattlescriptCurrInstr = BattleScript_SuccessBallThrow;
                     SetMonData(&gEnemyParty[gBattlerPartyIndexes[gBattlerTarget]], MON_DATA_POKEBALL, &gLastUsedItem);
                     if (CalculatePlayerPartyCount() == 6)

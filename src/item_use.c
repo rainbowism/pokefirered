@@ -711,6 +711,7 @@ static void sub_80A1D68(u8 taskId)
 
 void FieldUseFunc_VsSeeker(u8 taskId)
 {
+    PrintNotTheTimeToUseThat(taskId, gTasks[taskId].data[3]);
     if ((gMapHeader.mapType != MAP_TYPE_ROUTE
       && gMapHeader.mapType != MAP_TYPE_TOWN
       && gMapHeader.mapType != MAP_TYPE_CITY)
@@ -720,7 +721,6 @@ void FieldUseFunc_VsSeeker(u8 taskId)
        || gSaveBlock1Ptr->location.mapNum == MAP_NUM(THREE_ISLAND_BERRY_FOREST)
        || gSaveBlock1Ptr->location.mapNum == MAP_NUM(SIX_ISLAND_PATTERN_BUSH))))
     {
-        PrintNotTheTimeToUseThat(taskId, gTasks[taskId].data[3]);
     }
     else
     {

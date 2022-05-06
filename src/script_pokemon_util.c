@@ -8,6 +8,7 @@
 #include "party_menu.h"
 #include "pokedex.h"
 #include "script_pokemon_util.h"
+#include "strikes_patch.h"
 #include "constants/items.h"
 #include "constants/pokemon.h"
 
@@ -20,10 +21,37 @@ void HealPlayerParty(void)
     u8 ppBonuses;
     u8 arg[4];
 
+    // if this is a healing point, check if it's been used
+    u32 gameStat;
+    u32 healingBit;
+    u16 healingPoint = GetHealingPoint();
+    // not a repeatable healing point, allow as a free
+    if (healingPoint < (1 << 15))
+    {
+        healingBit = 1 << (healingPoint % 24);
+        gameStat = GetGameStat(GAME_STAT_HEALING_USED);
+#ifdef SINGLE_HEAL
+        if ((gameStat & healingBit) > 0)
+            return;
+        gameStat |= healingBit;
+        SetGameStat(GAME_STAT_HEALING_USED, gameStat);
+#else
+        if (gameStat >= 20)
+            return;
+        IncrementGameStat(GAME_STAT_HEALING_USED);
+#endif
+    }
+
     // restore HP.
     for(i = 0; i < gPlayerPartyCount; i++)
     {
-        u16 maxHP = GetMonData(&gPlayerParty[i], MON_DATA_MAX_HP);
+        // PERMADEATH
+        // if this pokemon has fainted, it can't be healed anymore
+        u16 maxHP;
+        if (GetMonData(&gPlayerParty[i], MON_DATA_HP) == 0)
+            continue;
+
+        maxHP = GetMonData(&gPlayerParty[i], MON_DATA_MAX_HP);
         arg[0] = maxHP;
         arg[1] = maxHP >> 8;
         SetMonData(&gPlayerParty[i], MON_DATA_HP, arg);
