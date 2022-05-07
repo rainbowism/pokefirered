@@ -519,7 +519,8 @@ PalletTown_ProfessorOaksLab_EventScript_EndRivalBattle:: @ 81694C2
 	removeobject LOCALID_RIVAL
 	playse SE_EXIT
 	fadedefaultbgm
-	setvar VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 4
+	setvar VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 2
+	setvar VAR_MAP_SCENE_VIRIDIAN_CITY_MART, 1
 	setflag FLAG_BEAT_RIVAL_IN_OAKS_LAB
 	releaseall
 	end
@@ -575,6 +576,7 @@ PalletTown_ProfessorOaksLab_Movement_RivalExitAfterBattleMid:: @ 816954A
 
 PalletTown_ProfessorOaksLab_Movement_PlayerWatchRivalExitAfterBattle:: @ 8169553
 	delay_16
+	walk_up
 	delay_8
 	walk_in_place_fastest_right
 	delay_16
@@ -583,6 +585,7 @@ PalletTown_ProfessorOaksLab_Movement_PlayerWatchRivalExitAfterBattle:: @ 8169553
 
 PalletTown_ProfessorOaksLab_Movement_PlayerWatchRivalExitAfterBattleRight:: @ 8169559
 	delay_16
+	walk_up
 	delay_8
 	walk_in_place_fastest_left
 	delay_16
@@ -650,14 +653,14 @@ PalletTown_ProfessorOaksLab_EventScript_OakBattleMonForItToGrow:: @ 8169614
 
 PalletTown_ProfessorOaksLab_EventScript_ReceiveDexScene:: @ 816961E
 	msgbox PalletTown_ProfessorOaksLab_Text_OakHaveSomethingForMe
-	textcolor 3
-	playfanfare MUS_OBTAIN_TMHM
-	message PalletTown_ProfessorOaksLab_Text_DeliveredOaksParcel
-	waitmessage
-	waitfanfare
-	call EventScript_RestorePrevTextColor
-	removeitem ITEM_OAKS_PARCEL, 1
-	msgbox PalletTown_ProfessorOaksLab_Text_OakCustomBallIOrdered
+	@ textcolor 3
+	@ playfanfare MUS_OBTAIN_TMHM
+	@ message PalletTown_ProfessorOaksLab_Text_DeliveredOaksParcel
+	@ waitmessage
+	@ waitfanfare
+	@ call EventScript_RestorePrevTextColor
+	@ removeitem ITEM_OAKS_PARCEL, 1
+	@ msgbox PalletTown_ProfessorOaksLab_Text_OakCustomBallIOrdered
 	playbgm MUS_ENCOUNTER_RIVAL, 0
 	msgbox PalletTown_ProfessorOaksLab_Text_RivalGramps
 	closemessage
@@ -686,7 +689,7 @@ PalletTown_ProfessorOaksLab_EventScript_ReceiveDexScene:: @ 816961E
 	call_if_eq PalletTown_ProfessorOaksLab_EventScript_DexSceneOakFacePlayerAndRivalWest
 	compare VAR_FACING, DIR_NORTH
 	call_if_eq PalletTown_ProfessorOaksLab_EventScript_DexSceneOakFacePlayerAndRivalNorth
-	msgbox PalletTown_ProfessorOaksLab_Text_OakHaveRequestForYouTwo
+	@ msgbox PalletTown_ProfessorOaksLab_Text_OakHaveRequestForYouTwo
 	closemessage
 	compare VAR_FACING, DIR_NORTH
 	call_if_eq PalletTown_ProfessorOaksLab_EventScript_DexSceneOakWalkToDeskNorth
@@ -696,10 +699,10 @@ PalletTown_ProfessorOaksLab_EventScript_ReceiveDexScene:: @ 816961E
 	call_if_eq PalletTown_ProfessorOaksLab_EventScript_DexSceneOakWalkToDeskEast
 	compare VAR_FACING, DIR_WEST
 	call_if_eq PalletTown_ProfessorOaksLab_EventScript_DexSceneOakWalkToDeskWest
-	msgbox PalletTown_ProfessorOaksLab_Text_OakPokedexOnDesk
+	@ msgbox PalletTown_ProfessorOaksLab_Text_OakPokedexOnDesk
 	closemessage
 	delay 40
-	msgbox PalletTown_ProfessorOaksLab_Text_OakTakeTheseWithYou
+	@ msgbox PalletTown_ProfessorOaksLab_Text_OakTakeTheseWithYou
 	closemessage
 	applymovement LOCALID_PROF_OAK, Movement_WalkInPlaceFastestUp
 	waitmovement 0
@@ -725,12 +728,12 @@ PalletTown_ProfessorOaksLab_EventScript_ReceiveDexScene:: @ 816961E
 	setflag FLAG_SYS_POKEDEX_GET
 	special SetUnlockedPokedexFlags
 	setvar VAR_MAP_SCENE_POKEMON_CENTER_TEALA, 1
-	msgbox PalletTown_ProfessorOaksLab_Text_OakCatchMonsForDataTakeThese
+	@ msgbox PalletTown_ProfessorOaksLab_Text_OakCatchMonsForDataTakeThese
 	giveitem_msg PalletTown_ProfessorOaksLab_Text_ReceivedFivePokeBalls, ITEM_POKE_BALL, 5
-	msgbox PalletTown_ProfessorOaksLab_Text_OakExplainCatching
+	@ msgbox PalletTown_ProfessorOaksLab_Text_OakExplainCatching
 	famechecker FAMECHECKER_OAK, 1
-	msgbox PalletTown_ProfessorOaksLab_Text_OakCompleteMonGuideWasMyDream
-	msgbox PalletTown_ProfessorOaksLab_Text_RivalLeaveItToMeGramps
+	@ msgbox PalletTown_ProfessorOaksLab_Text_OakCompleteMonGuideWasMyDream
+	@ msgbox PalletTown_ProfessorOaksLab_Text_RivalLeaveItToMeGramps
 	compare VAR_FACING, DIR_NORTH
 	call_if_eq PalletTown_ProfessorOaksLab_EventScript_DexSceneRivalFacePlayerNorth
 	compare VAR_FACING, DIR_SOUTH
@@ -739,7 +742,7 @@ PalletTown_ProfessorOaksLab_EventScript_ReceiveDexScene:: @ 816961E
 	call_if_eq PalletTown_ProfessorOaksLab_EventScript_DexSceneRivalFacePlayerEastWest
 	compare VAR_FACING, DIR_WEST
 	call_if_eq PalletTown_ProfessorOaksLab_EventScript_DexSceneRivalFacePlayerEastWest
-	msgbox PalletTown_ProfessorOaksLab_Text_RivalTellSisNotToGiveYouMap
+	@ msgbox PalletTown_ProfessorOaksLab_Text_RivalTellSisNotToGiveYouMap
 	closemessage
 	playbgm MUS_RIVAL_EXIT, 0
 	compare VAR_FACING, DIR_NORTH
@@ -1279,7 +1282,7 @@ PalletTown_ProfessorOaksLab_EventScript_RivalTakesStarter:: @ 8169D2F
 	end
 
 PalletTown_ProfessorOaksLab_EventScript_ReadyEndSignLadyScene:: @ 8169D5C
-	setvar VAR_MAP_SCENE_PALLET_TOWN_SIGN_LADY, 1
+	setvar VAR_MAP_SCENE_PALLET_TOWN_SIGN_LADY, 2
 	return
 
 PalletTown_ProfessorOaksLab_Movement_RivalWalksToCharmander:: @ 8169D62
