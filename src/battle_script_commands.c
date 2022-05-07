@@ -1090,7 +1090,10 @@ static void atk01_accuracycheck(void)
             buff = 0;
         if (buff > 0xC)
             buff = 0xC;
-        moveAcc = gBattleMoves[move].accuracy;
+        if (move == MOVE_SPORE && GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER)
+            moveAcc = gBattleMoves[MOVE_SLEEP_POWDER].accuracy;
+        else
+            moveAcc = gBattleMoves[move].accuracy;
         // check Thunder on sunny weather
         if (WEATHER_HAS_EFFECT && gBattleWeather & WEATHER_SUN_ANY && gBattleMoves[move].effect == EFFECT_THUNDER)
             moveAcc = 50;

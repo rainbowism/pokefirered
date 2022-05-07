@@ -2193,8 +2193,6 @@ u16 GiveMoveToMon(struct Pokemon *mon, u16 move)
 static u16 GiveMoveToBoxMon(struct BoxPokemon *boxMon, u16 move)
 {
     s32 i;
-    if (move == MOVE_SPORE)
-        move = MOVE_SLEEP_POWDER;
     for (i = 0; i < 4; i++)
     {
         u16 existingMove = GetBoxMonData(boxMon, MON_DATA_MOVE1 + i, NULL);
@@ -2229,8 +2227,6 @@ u16 GiveMoveToBattleMon(struct BattlePokemon *mon, u16 move)
 
 void SetMonMoveSlot(struct Pokemon *mon, u16 move, u8 slot)
 {
-    if (move == MOVE_SPORE)
-        move = MOVE_SLEEP_POWDER;
     SetMonData(mon, MON_DATA_MOVE1 + slot, &move);
     SetMonData(mon, MON_DATA_PP1 + slot, &gBattleMoves[move].pp);
 }
