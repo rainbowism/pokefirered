@@ -12,9 +12,9 @@ PalletTown_OnTransition:: @ 8165465
 	setworldmapflag FLAG_WORLD_MAP_PALLET_TOWN
 	call_if_set FLAG_PALLET_LADY_NOT_BLOCKING_SIGN, PalletTown_EventScript_TryReadySignLady
 	compare VAR_MAP_SCENE_PALLET_TOWN_SIGN_LADY, 0
-	call_if_eq PalletTown_EventScript_SetSignLadyPos
-	compare VAR_MAP_SCENE_PALLET_TOWN_SIGN_LADY, 1
 	call_if_eq PalletTown_EventScript_SetSignLadyDone
+	compare VAR_MAP_SCENE_PALLET_TOWN_SIGN_LADY, 1
+	call_if_eq PalletTown_EventScript_SetSignLadyPos
 	end
 
 PalletTown_EventScript_TryReadySignLady:: @ 8165488
@@ -42,6 +42,7 @@ PalletTown_EventScript_MoveSignLadyToRouteEntrance:: @ 81654BD
 
 PalletTown_OnFrame:: @ 81654CE
 	map_script_2 VAR_MAP_SCENE_PALLET_TOWN_OAK, 2, PalletTown_EventScript_OakRatingScene
+	map_script_2 VAR_MAP_SCENE_PALLET_TOWN_OAK, 0, PalletTown_EventScript_OakTrigger
 	.2byte 0
 
 @ Oak approaches player after exiting their house post Elite Four to check if they should receieve the National Dex
@@ -190,36 +191,36 @@ PalletTown_EventScript_OakTrigger:: @ 8165605
 	textcolor 0
 	delay 30
 	playbgm MUS_OAK, 0
-	message PalletTown_Text_OakDontGoOut
-	waitmessage
-	delay 85
-	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Movement_WalkInPlaceFastestDown
-	waitmovement 0
-	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Movement_ExclamationMark
-	waitmovement 0
-	delay 30
-	addobject LOCALID_PROF_OAK
-	compare VAR_TEMP_1, 0
-	call_if_eq PalletTown_EventScript_OakEnterLeft
-	compare VAR_TEMP_1, 1
-	call_if_eq PalletTown_EventScript_OakEnterRight
-	delay 30
-	msgbox PalletTown_Text_OakGrassUnsafeNeedMon
-	closemessage
-	delay 30
-	compare VAR_TEMP_1, 0
-	call_if_eq PalletTown_EventScript_OakLeadPlayerToLabLeft
-	compare VAR_TEMP_1, 1
-	call_if_eq PalletTown_EventScript_OakLeadPlayerToLabRight
-	opendoor 16, 13
-	waitdooranim
-	applymovement LOCALID_PROF_OAK, PalletTown_Movement_OakEnterLab
-	applymovement OBJ_EVENT_ID_PLAYER, PalletTown_Movement_PlayerEnterLab
-	waitmovement 0
-	closedoor 16, 13
-	waitdooranim
+	@ message PalletTown_Text_OakDontGoOut
+	@ waitmessage
+	@ delay 85
+	@ closemessage
+	@ applymovement OBJ_EVENT_ID_PLAYER, Movement_WalkInPlaceFastestDown
+	@ waitmovement 0
+	@ playse SE_PIN
+	@ applymovement OBJ_EVENT_ID_PLAYER, Movement_ExclamationMark
+	@ waitmovement 0
+	@ delay 30
+	@ addobject LOCALID_PROF_OAK
+	@ compare VAR_TEMP_1, 0
+	@ call_if_eq PalletTown_EventScript_OakEnterLeft
+	@ compare VAR_TEMP_1, 1
+	@ call_if_eq PalletTown_EventScript_OakEnterRight
+	@ delay 30
+	@ msgbox PalletTown_Text_OakGrassUnsafeNeedMon
+	@ closemessage
+	@ delay 30
+	@ compare VAR_TEMP_1, 0
+	@ call_if_eq PalletTown_EventScript_OakLeadPlayerToLabLeft
+	@ compare VAR_TEMP_1, 1
+	@ call_if_eq PalletTown_EventScript_OakLeadPlayerToLabRight
+	@ opendoor 16, 13
+	@ waitdooranim
+	@ applymovement LOCALID_PROF_OAK, PalletTown_Movement_OakEnterLab
+	@ applymovement OBJ_EVENT_ID_PLAYER, PalletTown_Movement_PlayerEnterLab
+	@ waitmovement 0
+	@ closedoor 16, 13
+	@ waitdooranim
 	setvar VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 1
 	clearflag FLAG_HIDE_OAK_IN_HIS_LAB
 	setvar VAR_MAP_SCENE_PALLET_TOWN_OAK, 1

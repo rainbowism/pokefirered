@@ -238,16 +238,16 @@ ViridianCity_EventScript_TutorialTriggerRight:: @ 8165B2E
 	end
 
 ViridianCity_EventScript_DoTutorialBattle:: @ 8165B4C
-	msgbox ViridianCity_Text_ShowYouHowToCatchMons
+	@ msgbox ViridianCity_Text_ShowYouHowToCatchMons
 	closemessage
 	goto_if_questlog EventScript_ReleaseEnd
 	special QuestLog_CutRecording
 	@ special StartOldManTutorialBattle
 	@ waitstate
 	@ lock
-	faceplayer
-	msgbox ViridianCity_Text_ThatWasEducationalTakeThis
+	@ faceplayer
+	@ msgbox ViridianCity_Text_ThatWasEducationalTakeThis
 	setvar VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 2
-	giveitem ITEM_TEACHY_TV
-	msgbox ViridianCity_Text_WatchThatToLearnBasics
+	@ giveitem ITEM_TEACHY_TV
+	@ msgbox ViridianCity_Text_WatchThatToLearnBasics
 	return
