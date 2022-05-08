@@ -40,7 +40,7 @@ BST, IV, and Nature display.
   * Red is positive, purple is negative.
   * + = 21+ IV
   * - = 10- IV
-Show Hidden Power typing in the summary. (still doesn't show in battle)
+Show Hidden Power typing in the summary and battles.
 Remove help system.
 Remove PokeCenter lag.
 Remove a lot of intro dialogue and tutorials.

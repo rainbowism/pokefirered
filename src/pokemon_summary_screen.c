@@ -3074,6 +3074,7 @@ static void PokeSum_DrawMoveTypeIcons(void)
         if (sMonSummaryScreen->moveIds[i] == MOVE_NONE)
             continue;
 
+        // TWEAK: render hidden power type in summary
         if (sMonSummaryScreen->moveIds[i] == MOVE_HIDDEN_POWER)
         {
             u8 moveType;
