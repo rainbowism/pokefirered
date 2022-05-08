@@ -191,6 +191,7 @@ PalletTown_EventScript_OakTrigger:: @ 8165605
 	textcolor 0
 	delay 30
 	playbgm MUS_OAK, 0
+	setflag FLAG_OPENED_START_MENU
 	@ message PalletTown_Text_OakDontGoOut
 	@ waitmessage
 	@ delay 85
