@@ -2472,6 +2472,7 @@ void SetMoveEffect(bool8 primary, u8 certain)
                 }
                 break;
             case MOVE_EFFECT_RECOIL_25: // 25% recoil
+                // 25% max HP Struggle
                 if (gCurrentMove == MOVE_STRUGGLE)
                     gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 4;
                 else
