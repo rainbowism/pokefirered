@@ -2472,7 +2472,10 @@ void SetMoveEffect(bool8 primary, u8 certain)
                 }
                 break;
             case MOVE_EFFECT_RECOIL_25: // 25% recoil
-                gBattleMoveDamage = (gHpDealt) / 4;
+                if (gCurrentMove == MOVE_STRUGGLE)
+                    gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 4;
+                else
+                    gBattleMoveDamage = (gHpDealt) / 4;
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
                 BattleScriptPush(gBattlescriptCurrInstr + 1);
