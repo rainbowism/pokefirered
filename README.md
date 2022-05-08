@@ -20,7 +20,7 @@ Pokemon with Pure Power / Huge Power become Plus / Minus for players.
 Forced "Set" to always be enabled.
 Reduced mid-late game trainer money rewards.
   old: 4 * LastPokemonLevel * TrainerClass
-  new: 2 * LastPokemonLevel * TrainerClass + 150
+  new: LastPokemonLevel * TrainerClass + 100
 Remove Move Deleter.
 Remove Sevii Islands.
 Remove Vs. Seeker.
