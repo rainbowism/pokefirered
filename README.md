@@ -1,39 +1,49 @@
-# Pokémon FireRed and LeafGreen
+# sushirando features
 
-[![Build Status][travis-badge]][travis]
+The intended ruleset is automatically loaded in the randomizer when you open the ROM, but can be played vanilla as well.
 
-[travis]: https://travis-ci.org/pret/pokefirered
-[travis-badge]: https://travis-ci.org/pret/pokefirered.svg?branch=master
+## Gameplay Changes
+```
+Up to 20 renewable heals in total. (Pokemon Centers, Mom, S.S. Anne, Silph Co., Pokemon Tower)
+  * Remaining heals are in your trainer card.
+  * Free heals aren't counted towards this.
+1 catch/faint per route/dungeon.
+  * Subsequent faints grant no exp or EVs.
+  * Subsequent catches immediately break out.
+Fainted Pokemon can't be healed until they are revived.
+Taking a Pokemon out of the PC sets their HP to 1.
+Rock Tunnel no longer requires Flash.
+Struggle recoil now deals 25% of your max HP.
+Spore has Sleep Powder's accuracy when the player uses it.
+Pokemon with Pure Power / Huge Power become Plus / Minus for players.
+670+ BST Pokemon are granted Truant for players.
+Forced "Set" to always be enabled.
+Remove Move Deleter.
+Remove Sevii Islands.
+Remove Vs. Seeker.
+Remove effects from the following items:
+  * Blue Flute
+  * Yellow Flute
+  * Red Flute
+  * Amulet Coin
+  * Lucky Egg
+  * Leftovers
+```
 
-This is a disassembly of Pokémon FireRed and LeafGreen.
+## Tweaks/QoL
+```
+BST, IV, and Nature display.
+  * Red is positive, purple is negative.
+  * + = 21+ IV
+  * - = 10- IV
+Show Hidden Power typing in the summary. (still doesn't show in battle)
+Remove help system.
+Remove PokeCenter lag.
+Remove a lot of intro dialogue and tutorials.
+  * Oak's intro has been cut down.
+  * No more parcel.
+  * Old man is dead.
+Free running shoes, and running indoors.
+```
 
-It builds the following ROMs:
-
-* [**pokefirered.gba**](https://datomatic.no-intro.org/?page=show_record&s=23&n=1616) `sha1: 41cb23d8dccc8ebd7c649cd8fbb58eeace6e2fdc`
-* [**pokeleafgreen.gba**](https://datomatic.no-intro.org/?page=show_record&s=23&n=1617) `sha1: 574fa542ffebb14be69902d1d36f1ec0a4afd71e`
-* [**pokefirered_rev1.gba**](https://datomatic.no-intro.org/?page=show_record&s=23&n=1672) `sha1: dd5945db9b930750cb39d00c84da8571feebf417`
-* [**pokeleafgreen_rev1.gba**](https://datomatic.no-intro.org/index.php?page=show_record&s=23&n=1668) `sha1: 7862c67bdecbe21d1d69ce082ce34327e1c6ed5e`
-
-To set up the repository, see [INSTALL.md](INSTALL.md).
-
-
-## See also
-
-Other disassembly and/or decompilation projects:
-* [**Pokémon Red and Blue**](https://github.com/pret/pokered)
-* [**Pokémon Gold and Silver (Space World '97 demo)**](https://github.com/pret/pokegold-spaceworld)
-* [**Pokémon Yellow**](https://github.com/pret/pokeyellow)
-* [**Pokémon Trading Card Game**](https://github.com/pret/poketcg)
-* [**Pokémon Pinball**](https://github.com/pret/pokepinball)
-* [**Pokémon Stadium**](https://github.com/pret/pokestadium)
-* [**Pokémon Gold and Silver**](https://github.com/pret/pokegold)
-* [**Pokémon Crystal**](https://github.com/pret/pokecrystal)
-* [**Pokémon Ruby and Sapphire**](https://github.com/pret/pokeruby)
-* [**Pokémon Pinball: Ruby & Sapphire**](https://github.com/pret/pokepinballrs)
-* [**Pokémon Emerald**](https://github.com/pret/pokeemerald)
-* [**Pokémon Mystery Dungeon: Red Rescue Team**](https://github.com/pret/pmd-red)
-
-
-## Contacts
-
-You can find us on [Discord](https://discord.gg/d5dubZ3) and [IRC](https://web.libera.chat/?#pret).
+* [**Original decompilation**](https://github.com/pret/pokefirered)
