@@ -2404,10 +2404,10 @@ u8 ItemBattleEffects(u8 caseID, u8 battlerId, bool8 moveTurn)
     case ITEMEFFECT_ON_SWITCH_IN:
         switch (battlerHoldEffect)
         {
-            // remove amulet coin effect
-        // case HOLD_EFFECT_DOUBLE_PRIZE:
-        //     gBattleStruct->moneyMultiplier = 2;
-        //     break;
+        // DISABLE: Amulet Coin
+        case HOLD_EFFECT_DOUBLE_PRIZE:
+            gBattleStruct->moneyMultiplier = 1;
+            break;
         case HOLD_EFFECT_RESTORE_STATS:
             for (i = 0; i < NUM_BATTLE_STATS; ++i)
             {
@@ -2494,7 +2494,7 @@ u8 ItemBattleEffects(u8 caseID, u8 battlerId, bool8 moveTurn)
                     BattleScriptExecute(BattleScript_WhiteHerbEnd2);
                 }
                 break;
-            // remove leftovers
+            // DISABLE: Leftovers
             // case HOLD_EFFECT_LEFTOVERS:
             //     if (gBattleMons[battlerId].hp < gBattleMons[battlerId].maxHP && !moveTurn)
             //     {

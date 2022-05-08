@@ -3187,9 +3187,9 @@ static void atk23_getexp(void)
                         gBattleMoveDamage = 0;
                     if (holdEffect == HOLD_EFFECT_EXP_SHARE)
                         gBattleMoveDamage += gExpShareExp;
-                    // remove lucky egg effect
-                    // if (holdEffect == HOLD_EFFECT_LUCKY_EGG)
-                    //     gBattleMoveDamage = (gBattleMoveDamage * 150) / 100;
+                    // DISABLE: Lucky Egg
+                    if (holdEffect == HOLD_EFFECT_LUCKY_EGG)
+                        gBattleMoveDamage = gBattleMoveDamage;// (gBattleMoveDamage * 150) / 100;
                     if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
                         gBattleMoveDamage = (gBattleMoveDamage * 150) / 100;
                     if (IsTradedMon(&gPlayerParty[gBattleStruct->expGetterMonId])
