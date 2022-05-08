@@ -11,10 +11,10 @@ PalletTown_MapScripts:: @ 816545A
 PalletTown_OnTransition:: @ 8165465
 	setworldmapflag FLAG_WORLD_MAP_PALLET_TOWN
 	call_if_set FLAG_PALLET_LADY_NOT_BLOCKING_SIGN, PalletTown_EventScript_TryReadySignLady
-	compare VAR_MAP_SCENE_PALLET_TOWN_SIGN_LADY, 0
-	call_if_eq PalletTown_EventScript_SetSignLadyDone
-	compare VAR_MAP_SCENE_PALLET_TOWN_SIGN_LADY, 1
-	call_if_eq PalletTown_EventScript_SetSignLadyPos
+	@ compare VAR_MAP_SCENE_PALLET_TOWN_SIGN_LADY, 0
+	@ call_if_eq PalletTown_EventScript_SetSignLadyPos
+	@ compare VAR_MAP_SCENE_PALLET_TOWN_SIGN_LADY, 1
+	call PalletTown_EventScript_SetSignLadyDone
 	end
 
 PalletTown_EventScript_TryReadySignLady:: @ 8165488
@@ -191,7 +191,6 @@ PalletTown_EventScript_OakTrigger:: @ 8165605
 	textcolor 0
 	delay 30
 	playbgm MUS_OAK, 0
-	setflag FLAG_OPENED_START_MENU
 	@ message PalletTown_Text_OakDontGoOut
 	@ waitmessage
 	@ delay 85
