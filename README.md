@@ -25,6 +25,7 @@ Remove Move Deleter.
 Remove Sevii Islands.
 Remove Vs. Seeker.
 Remove effects from the following items:
+  * Poke Flute
   * Blue Flute
   * Yellow Flute
   * Red Flute
