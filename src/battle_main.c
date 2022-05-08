@@ -4060,10 +4060,11 @@ static void HandleAction_UseItem(void)
     {
         gBattlescriptCurrInstr = gBattlescriptsForRunningByItem[0];
     }
-    else if (gLastUsedItem == ITEM_POKE_FLUTE)
-    {
-        gBattlescriptCurrInstr = gBattlescriptsForRunningByItem[1];
-    }
+    // DISABLE: Poke Flute
+    // else if (gLastUsedItem == ITEM_POKE_FLUTE)
+    // {
+    //     gBattlescriptCurrInstr = gBattlescriptsForRunningByItem[1];
+    // }
     else if (GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER)
     {
         gBattlescriptCurrInstr = gBattlescriptsForUsingItem[0];
