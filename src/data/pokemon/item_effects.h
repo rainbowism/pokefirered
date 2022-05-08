@@ -138,15 +138,15 @@ static const u8 sItemEffect_LavaCookie[6] = {
 };
 
 static const u8 sItemEffect_BlueFlute[6] = {
-    [3] = ITEM3_SLEEP,
+    // [3] = ITEM3_SLEEP,
 };
 
 static const u8 sItemEffect_YellowFlute[6] = {
-    [3] = ITEM3_CONFUSION,
+    // [3] = ITEM3_CONFUSION,
 };
 
 static const u8 sItemEffect_RedFlute[6] = {
-    [0] = ITEM0_INFATUATION,
+    // [0] = ITEM0_INFATUATION,
 };
 
 static const u8 sItemEffect_BerryJuice[7] = {
