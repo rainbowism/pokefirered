@@ -3760,19 +3760,20 @@ u8 GetAbilityBySpecies(u16 species, bool8 abilityNum, bool8 player)
         bst += gBaseStats[species].baseSpeed;
         bst += gBaseStats[species].baseSpAttack;
         bst += gBaseStats[species].baseSpDefense;
-        if (bst > 600)
+        if (bst >= 620)
         {
             gLastUsedAbility = ABILITY_TRUANT;
             return gLastUsedAbility;
         }
-    }
 
-    if (player)
-    {
-        if (gLastUsedAbility == ABILITY_HUGE_POWER
-            || gLastUsedAbility == ABILITY_PURE_POWER)
+        if (gLastUsedAbility == ABILITY_HUGE_POWER)
         {
-            gLastUsedAbility = ABILITY_TRUANT;
+            gLastUsedAbility = ABILITY_PLUS;
+            return gLastUsedAbility;
+        }
+        if (gLastUsedAbility == ABILITY_PURE_POWER)
+        {
+            gLastUsedAbility = ABILITY_MINUS;
             return gLastUsedAbility;
         }
     }
