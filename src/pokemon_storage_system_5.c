@@ -930,6 +930,9 @@ void SetMonMarkings(u8 markings)
 
 bool8 CanMovePartyMon(void)
 {
+    // TWEAK: 0 HP can't be moved into box
+    if (GetMonData(&gPlayerParty[sBoxCursorPosition], MON_DATA_HP) == 0)
+        return TRUE;
     if (sBoxCursorArea == CURSOR_AREA_IN_PARTY && !sIsMonBeingMoved && CountPartyAliveNonEggMonsExcept(sBoxCursorPosition) == 0)
         return TRUE;
     else
@@ -940,6 +943,8 @@ bool8 CanShiftMon(void)
 {
     if (sIsMonBeingMoved)
     {
+        if (GetMonData(&gPlayerParty[sBoxCursorPosition], MON_DATA_HP) == 0)
+            return FALSE;
         if (sBoxCursorArea == CURSOR_AREA_IN_PARTY && CountPartyAliveNonEggMonsExcept(sBoxCursorPosition) == 0)
         {
             if (gPSSData->cursorMonIsEgg || GetMonData(&gPSSData->movingMon, MON_DATA_HP) == 0)
