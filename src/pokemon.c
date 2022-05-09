@@ -2407,7 +2407,7 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
         defenderHoldEffectParam = ItemId_GetHoldEffectParam(defender->item);
     }
 
-    if (attacker->ability == ABILITY_HUGE_POWER || attacker->ability == ABILITY_PURE_POWER)
+    if (GetBattlerSide(battlerIdAtk) != B_SIDE_PLAYER && (attacker->ability == ABILITY_HUGE_POWER || attacker->ability == ABILITY_PURE_POWER))
         attack *= 2;
 
     // In FRLG, the Battle Tower and opponent checks are stubbed here.
@@ -2890,29 +2890,29 @@ u32 GetMonData(struct Pokemon *mon, s32 field, u8* data)
         ret = mon->maxHP;
         break;
     case MON_DATA_ATK:
-        ret = GetDeoxysStat(mon, STAT_ATK);
-        if (!ret)
-            ret = mon->attack;
+        // ret = GetDeoxysStat(mon, STAT_ATK);
+        // if (!ret)
+        ret = mon->attack;
         break;
     case MON_DATA_DEF:
-        ret = GetDeoxysStat(mon, STAT_DEF);
-        if (!ret)
-            ret = mon->defense;
+        // ret = GetDeoxysStat(mon, STAT_DEF);
+        // if (!ret)
+        ret = mon->defense;
         break;
     case MON_DATA_SPEED:
-        ret = GetDeoxysStat(mon, STAT_SPEED);
-        if (!ret)
-            ret = mon->speed;
+        // ret = GetDeoxysStat(mon, STAT_SPEED);
+        // if (!ret)
+        ret = mon->speed;
         break;
     case MON_DATA_SPATK:
-        ret = GetDeoxysStat(mon, STAT_SPATK);
-        if (!ret)
-            ret = mon->spAttack;
+        // ret = GetDeoxysStat(mon, STAT_SPATK);
+        // if (!ret)
+        ret = mon->spAttack;
         break;
     case MON_DATA_SPDEF:
-        ret = GetDeoxysStat(mon, STAT_SPDEF);
-        if (!ret)
-            ret = mon->spDefense;
+        // ret = GetDeoxysStat(mon, STAT_SPDEF);
+        // if (!ret)
+        ret = mon->spDefense;
         break;
     case MON_DATA_ATK2:
         ret = mon->attack;
