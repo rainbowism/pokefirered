@@ -20,8 +20,9 @@ Pokemon with Pure Power / Huge Power become Plus / Minus for players.
 670+ BST Pokemon are granted Truant for players.
 Forced "Set" to always be enabled.
 Reduced mid-late game trainer money rewards.
-  old: 4 * LastPokemonLevel * TrainerClass
+  old: LastPokemonLevel * TrainerClass * 4
   new: LastPokemonLevel * TrainerClass + 100
+Flatten wild encounter chances, no more rare Pokemon slots.
 Remove Move Deleter.
 Remove Sevii Islands.
 Remove Vs. Seeker.
