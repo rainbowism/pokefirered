@@ -3765,7 +3765,15 @@ u8 GetAbilityBySpecies(u16 species, bool8 abilityNum, bool8 player)
             gLastUsedAbility = ABILITY_TRUANT;
             return gLastUsedAbility;
         }
+    }
 
+    if (abilityNum)
+        gLastUsedAbility = gBaseStats[species].abilities[1];
+    else
+        gLastUsedAbility = gBaseStats[species].abilities[0];
+
+    if (player)
+    {
         if (gLastUsedAbility == ABILITY_HUGE_POWER)
         {
             gLastUsedAbility = ABILITY_PLUS;
@@ -3777,12 +3785,6 @@ u8 GetAbilityBySpecies(u16 species, bool8 abilityNum, bool8 player)
             return gLastUsedAbility;
         }
     }
-
-    if (abilityNum)
-        gLastUsedAbility = gBaseStats[species].abilities[1];
-    else
-        gLastUsedAbility = gBaseStats[species].abilities[0];
-            
 
     return gLastUsedAbility;
 }
