@@ -19,9 +19,10 @@ Spore has Sleep Powder's accuracy when the player uses it.
 Pokemon with Pure Power / Huge Power become Plus / Minus for players.
 670+ BST Pokemon are granted Truant for players.
 Forced "Set" to always be enabled.
-Reduced mid-late game trainer money rewards.
-  old: LastPokemonLevel * TrainerClass * 4
-  new: LastPokemonLevel * TrainerClass + 100
+Reduced mid-late game trainer prize money.
+  Old: HighestPokemonLevel * TrainerClass * 4
+  New: HighestPokemonLevel * TrainerClass + 100
+  Bosses have double prize money.
 Flatten wild encounter chances, no more rare Pokemon slots.
 Remove Move Deleter.
 Remove Sevii Islands.
