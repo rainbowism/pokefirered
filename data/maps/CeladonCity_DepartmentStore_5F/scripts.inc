@@ -17,10 +17,11 @@ CeladonCity_DepartmentStore_5F_EventScript_ClerkXItems:: @ 816BC5C
 	goto_if_questlog EventScript_ReleaseEnd
 	lock
 	faceplayer
-	message Text_MayIHelpYou
-	waitmessage
-	pokemart CeladonCity_DepartmentStore_5F_XItems
-	msgbox Text_PleaseComeAgain
+	@ message Text_MayIHelpYou
+	@ waitmessage
+	@ pokemart CeladonCity_DepartmentStore_5F_XItems
+	@ msgbox Text_PleaseComeAgain
+	msgbox Text_MayIHelpYou
 	release
 	end
 

@@ -24,6 +24,7 @@ Reduced mid-late game trainer prize money.
   New: HighestPokemonLevel * TrainerClass + 100
   Bosses have double prize money.
 Flatten wild encounter chances, no more rare Pokemon slots.
+Remove Celadon Department X Items store.
 Remove Move Deleter.
 Remove Sevii Islands.
 Remove Vs. Seeker.
