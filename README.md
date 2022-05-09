@@ -11,7 +11,8 @@ Up to 20 renewable heals in total. (Pokemon Centers, Mom, S.S. Anne, Silph Co., 
   * Subsequent faints grant no exp or EVs.
   * Subsequent catches immediately break out.
 Fainted Pokemon can't be healed until they are revived.
-Taking a Pokemon out of the PC sets their HP to 1.
+Fainted Pokemon can't be deposited in the PC.
+Withdrawing a Pokemon out of the PC sets their HP to 1.
 Rock Tunnel no longer requires Flash.
 Struggle recoil now deals 25% of your max HP.
 Spore has Sleep Powder's accuracy when the player uses it.
