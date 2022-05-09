@@ -31,6 +31,7 @@ CinnabarIsland_PokemonCenter_1F_EventScript_Youngster:: @ 816E901
 CinnabarIsland_PokemonCenter_1F_EventScript_Bill:: @ 816E90A
 	lock
 	faceplayer
+	goto CinnabarIsland_PokemonCenter_1F_EventScript_NotReadyToSail
 	msgbox CinnabarIsland_PokemonCenter_1F_Text_ReadyToSailToOneIsland, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq CinnabarIsland_PokemonCenter_1F_EventScript_NotReadyToSail

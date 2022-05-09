@@ -105,7 +105,7 @@ CinnabarIsland_EventScript_BillScene:: @ 8166FCD
 	call_if_unset FLAG_TEMP_2, CinnabarIsland_EventScript_BillApproachPlayer1
 	call_if_set FLAG_TEMP_2, CinnabarIsland_EventScript_BillApproachPlayer2
 	msgbox CinnabarIsland_Text_HeyIfItIsntPlayer
-	releaseall
+	goto CinnabarIsland_EventScript_DeclineSailToOneIsland
 	@ msgbox CinnabarIsland_Text_ComeWithMeToOneIsland, MSGBOX_YESNO
 	@ compare VAR_RESULT, YES
 	@ goto_if_eq CinnabarIsland_EventScript_AgreeSailToOneIsland
