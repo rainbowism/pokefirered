@@ -5231,8 +5231,8 @@ static void atk5D_getmoneyreward(void)
             }
             party4 = gTrainers[gTrainerBattleOpponent_A].party.ItemCustomMoves; // Needed to Match. Has no effect.
             // moneyReward = 4 * lastMonLevel * gBattleStruct->moneyMultiplier * (gBattleTypeFlags & BATTLE_TYPE_DOUBLE ? 2 : 1) * gTrainerMoneyTable[i].value;
-            // TWEAK: reduce money rewards
-            moneyReward = (100 + (lastMonLevel * gTrainerMoneyTable[i].value)) * (gBattleTypeFlags & BATTLE_TYPE_DOUBLE ? 2 : 1);
+            // TWEAK: prize money only comes from bosses/important events
+            moneyReward = ((8 * lastMonLevel * gTrainerMoneyTable[i].value) + 5) * (gBattleTypeFlags & BATTLE_TYPE_DOUBLE ? 2 : 1);
         }
         AddMoney(&gSaveBlock1Ptr->money, moneyReward);
     }
