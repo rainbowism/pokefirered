@@ -23,6 +23,7 @@ Trainers only reward 5 Pokedollars.
 Bosses have significantly raised prize money.
 Flatten wild encounter chances, no more rare Pokemon slots.
 Remove Celadon Department X Items store.
+Remove Game Corner machines using/giving coins.
 Remove Move Deleter.
 Remove Sevii Islands.
 Remove Vs. Seeker.
@@ -43,6 +44,7 @@ BST, IV, and Nature display.
   * + = 21+ IV
   * - = 10- IV
 Show Hidden Power typing in the summary and battles.
+Add BW2+ Repel re-use prompt.
 Remove help system.
 Remove PokeCenter lag.
 Remove a lot of intro dialogue and tutorials.
