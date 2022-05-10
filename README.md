@@ -45,6 +45,7 @@ BST, IV, and Nature display.
   * - = 10- IV
 Show Hidden Power typing in the summary and battles.
 Add BW2+ Repel re-use prompt.
+Guarantee runs after 3 tries.
 Remove help system.
 Remove PokeCenter lag.
 Remove a lot of intro dialogue and tutorials.
