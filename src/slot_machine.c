@@ -882,7 +882,8 @@ static void MainTask_SlotsGameLoop(u8 taskId)
         else if (JOY_NEW(DPAD_DOWN))
         {
             sSlotMachineState->bet++;
-            RemoveCoins(1);
+            // TWEAK: remove winning coins from slots
+            RemoveCoins(0);
             PlaySE(SE_RS_SHOP);
             SetSlotMachineSetupTask(SLOTTASK_SHOW_AMOUNTS, 0);
             SetSlotMachineSetupTask(SLOTTASK_UPDATE_LINE_LIGHTS, 1);
@@ -894,7 +895,8 @@ static void MainTask_SlotsGameLoop(u8 taskId)
             if (GetCoins() >= toAdd)
             {
                 sSlotMachineState->bet = 3;
-                RemoveCoins(toAdd);
+                // TWEAK: remove winning coins from slots
+                RemoveCoins(0);
             }
             else
             {
@@ -1041,7 +1043,8 @@ static void MainTask_ConfirmExitGame(u8 taskId)
         switch (Menu_ProcessInputNoWrapClearOnChoose())
         {
         case 0:
-            AddCoins(sSlotMachineState->bet);
+            // TWEAK: remove winning coins from slots
+            AddCoins(0);
             SetSlotMachineSetupTask(SLOTTASK_SHOW_AMOUNTS, 0);
             data[0] = 3;
             break;
@@ -1122,7 +1125,8 @@ static void MainTask_WinHandlePayout(u8 taskId)
         {
             if (IsFanfareTaskInactive() && JOY_NEW(START_BUTTON))
             {
-                AddCoins(sSlotMachineState->payout);
+                // TWEAK: remove winning coins from slots
+                AddCoins(0);
                 sSlotMachineState->payout = 0;
             }
             else
@@ -1134,7 +1138,8 @@ static void MainTask_WinHandlePayout(u8 taskId)
                         PlaySE(SE_PIN);
                     if (sSlotMachineState->payout != 0)
                     {
-                        AddCoins(1);
+                        // TWEAK: remove winning coins from slots
+                        AddCoins(0);
                         sSlotMachineState->payout--;
                     }
                     data[1] = 8;
