@@ -129,8 +129,6 @@ static const struct RenewableHiddenItemData sRenewableHiddenItems[] = {
             0xFF,
             0xFF,
             0xFF,
-            0xFF,
-            0xFF,
             0xFF
         },
         .uncommon = {
