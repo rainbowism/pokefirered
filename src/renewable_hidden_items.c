@@ -20,7 +20,7 @@ static const struct RenewableHiddenItemData sRenewableHiddenItems[] = {
         .mapGroup = MAP_GROUP(ROUTE20),
         .mapNum = MAP_NUM(ROUTE20),
         .rare = {
-            0xFF,
+            HIDDEN_ITEM_ROUTE20_STARDUST,
             0xFF,
             0xFF,
             0xFF,
@@ -40,7 +40,7 @@ static const struct RenewableHiddenItemData sRenewableHiddenItems[] = {
             0xFF
         },
         .common = {
-            0xFF,
+            HIDDEN_ITEM_ROUTE20_STARDUST,
             0xFF,
             0xFF,
             0xFF,
@@ -54,7 +54,7 @@ static const struct RenewableHiddenItemData sRenewableHiddenItems[] = {
         .mapGroup = MAP_GROUP(ROUTE21_NORTH),
         .mapNum = MAP_NUM(ROUTE21_NORTH),
         .rare = {
-            0xFF,
+            HIDDEN_ITEM_ROUTE21_NORTH_PEARL,
             0xFF,
             0xFF,
             0xFF,
@@ -74,7 +74,7 @@ static const struct RenewableHiddenItemData sRenewableHiddenItems[] = {
             0xFF
         },
         .common = {
-            0xFF,
+            HIDDEN_ITEM_ROUTE21_NORTH_PEARL,
             0xFF,
             0xFF,
             0xFF,
@@ -89,8 +89,8 @@ static const struct RenewableHiddenItemData sRenewableHiddenItems[] = {
         .mapNum = MAP_NUM(UNDERGROUND_PATH_NORTH_SOUTH_TUNNEL),
         .rare = {
             HIDDEN_ITEM_UNDERGROUND_PATH_NORTH_SOUTH_TUNNEL_ETHER,
-            0xFF,
-            0xFF,
+            HIDDEN_ITEM_UNDERGROUND_PATH_NORTH_SOUTH_TUNNEL_POTION,
+            HIDDEN_ITEM_UNDERGROUND_PATH_NORTH_SOUTH_TUNNEL_ANTIDOTE,
             0xFF,
             0xFF,
             0xFF,
@@ -98,18 +98,18 @@ static const struct RenewableHiddenItemData sRenewableHiddenItems[] = {
             0xFF
         },
         .uncommon = {
-            HIDDEN_ITEM_UNDERGROUND_PATH_NORTH_SOUTH_TUNNEL_POTION,
-            HIDDEN_ITEM_UNDERGROUND_PATH_NORTH_SOUTH_TUNNEL_ANTIDOTE,
             HIDDEN_ITEM_UNDERGROUND_PATH_NORTH_SOUTH_TUNNEL_PARALYZE_HEAL,
             HIDDEN_ITEM_UNDERGROUND_PATH_NORTH_SOUTH_TUNNEL_AWAKENING,
-            HIDDEN_ITEM_UNDERGROUND_PATH_NORTH_SOUTH_TUNNEL_BURN_HEAL,
-            HIDDEN_ITEM_UNDERGROUND_PATH_NORTH_SOUTH_TUNNEL_ICE_HEAL,
+            0xFF,
+            0xFF,
+            0xFF,
+            0xFF,
             0xFF,
             0xFF
         },
         .common = {
-            0xFF,
-            0xFF,
+            HIDDEN_ITEM_UNDERGROUND_PATH_NORTH_SOUTH_TUNNEL_BURN_HEAL,
+            HIDDEN_ITEM_UNDERGROUND_PATH_NORTH_SOUTH_TUNNEL_ICE_HEAL,
             0xFF,
             0xFF,
             0xFF,
@@ -123,6 +123,8 @@ static const struct RenewableHiddenItemData sRenewableHiddenItems[] = {
         .mapNum = MAP_NUM(UNDERGROUND_PATH_EAST_WEST_TUNNEL),
         .rare = {
             HIDDEN_ITEM_UNDERGROUND_PATH_EAST_WEST_TUNNEL_ETHER,
+            HIDDEN_ITEM_UNDERGROUND_PATH_EAST_WEST_TUNNEL_POTION,
+            HIDDEN_ITEM_UNDERGROUND_PATH_EAST_WEST_TUNNEL_ANTIDOTE,
             0xFF,
             0xFF,
             0xFF,
@@ -132,18 +134,18 @@ static const struct RenewableHiddenItemData sRenewableHiddenItems[] = {
             0xFF
         },
         .uncommon = {
-            HIDDEN_ITEM_UNDERGROUND_PATH_EAST_WEST_TUNNEL_POTION,
-            HIDDEN_ITEM_UNDERGROUND_PATH_EAST_WEST_TUNNEL_ANTIDOTE,
             HIDDEN_ITEM_UNDERGROUND_PATH_EAST_WEST_TUNNEL_PARALYZE_HEAL,
             HIDDEN_ITEM_UNDERGROUND_PATH_EAST_WEST_TUNNEL_AWAKENING,
-            HIDDEN_ITEM_UNDERGROUND_PATH_EAST_WEST_TUNNEL_BURN_HEAL,
-            HIDDEN_ITEM_UNDERGROUND_PATH_EAST_WEST_TUNNEL_ICE_HEAL,
+            0xFF,
+            0xFF,
+            0xFF,
+            0xFF,
             0xFF,
             0xFF
         },
         .common = {
-            0xFF,
-            0xFF,
+            HIDDEN_ITEM_UNDERGROUND_PATH_EAST_WEST_TUNNEL_BURN_HEAL,
+            HIDDEN_ITEM_UNDERGROUND_PATH_EAST_WEST_TUNNEL_ICE_HEAL,
             0xFF,
             0xFF,
             0xFF,
@@ -195,7 +197,7 @@ static const struct RenewableHiddenItemData sRenewableHiddenItems[] = {
             HIDDEN_ITEM_MT_MOON_B1F_TINY_MUSHROOM_3,
             HIDDEN_ITEM_MT_MOON_B1F_BIG_MUSHROOM,
             HIDDEN_ITEM_MT_MOON_B1F_BIG_MUSHROOM_2,
-            HIDDEN_ITEM_MT_MOON_B1F_BIG_MUSHROOM_3,
+            0xFF,
             0xFF,
             0xFF
         },
@@ -203,16 +205,16 @@ static const struct RenewableHiddenItemData sRenewableHiddenItems[] = {
             HIDDEN_ITEM_MT_MOON_B1F_TINY_MUSHROOM,
             HIDDEN_ITEM_MT_MOON_B1F_TINY_MUSHROOM_2,
             HIDDEN_ITEM_MT_MOON_B1F_TINY_MUSHROOM_3,
-            0xFF,
+            HIDDEN_ITEM_MT_MOON_B1F_BIG_MUSHROOM_3,
             0xFF,
             0xFF,
             0xFF,
             0xFF
         },
         .common = {
-            0xFF,
-            0xFF,
-            0xFF,
+            HIDDEN_ITEM_MT_MOON_B1F_TINY_MUSHROOM,
+            HIDDEN_ITEM_MT_MOON_B1F_TINY_MUSHROOM_2,
+            HIDDEN_ITEM_MT_MOON_B1F_TINY_MUSHROOM_3,
             0xFF,
             0xFF,
             0xFF,
