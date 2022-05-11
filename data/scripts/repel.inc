@@ -51,7 +51,7 @@ EventScript_UseAnotherRepel::
 
 EventScript_UsedRepel::
 	removeitem ITEM_REPEL
-	msgbox Text_RepelWoreOff, MSGBOX_SIGN
+	msgbox Text_UsedRepel, MSGBOX_SIGN
 	releaseall
 	end
 
