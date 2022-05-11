@@ -2600,16 +2600,16 @@ static void PrintSkillsPage(void)
     }
     switch(nature) // spAStr
     {
-    case NATURE_TIMID:
-    case NATURE_HASTY:
-    case NATURE_JOLLY:
-    case NATURE_NAIVE:
+    case NATURE_MODEST:
+    case NATURE_MILD:
+    case NATURE_QUIET:
+    case NATURE_RASH:
         AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], 2, 50 + sMonSkillsPrinterXpos->spAStr, 48, sLevelNickTextColors[6], TEXT_SPEED_FF, sMonSummaryScreen->summary.statValueStrBufs[PSS_STAT_SPA]);
         break;
-    case NATURE_BRAVE:
-    case NATURE_RELAXED:
-    case NATURE_QUIET:
-    case NATURE_SASSY:
+    case NATURE_ADAMANT:
+    case NATURE_IMPISH:
+    case NATURE_JOLLY:
+    case NATURE_CAREFUL:
         AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], 2, 50 + sMonSkillsPrinterXpos->spAStr, 48, sLevelNickTextColors[7], TEXT_SPEED_FF, sMonSummaryScreen->summary.statValueStrBufs[PSS_STAT_SPA]);
         break;
     default:
@@ -2618,16 +2618,16 @@ static void PrintSkillsPage(void)
     }
     switch(nature) // spDStr
     {
-    case NATURE_MODEST:
-    case NATURE_MILD:
-    case NATURE_QUIET:
-    case NATURE_RASH:
+    case NATURE_CALM:
+    case NATURE_GENTLE:
+    case NATURE_SASSY:
+    case NATURE_CAREFUL:
         AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], 2, 50 + sMonSkillsPrinterXpos->spDStr, 61, sLevelNickTextColors[6], TEXT_SPEED_FF, sMonSummaryScreen->summary.statValueStrBufs[PSS_STAT_SPD]);
         break;
-    case NATURE_ADAMANT:
-    case NATURE_IMPISH:
-    case NATURE_JOLLY:
-    case NATURE_CAREFUL:
+    case NATURE_NAUGHTY:
+    case NATURE_LAX:
+    case NATURE_NAIVE:
+    case NATURE_RASH:
         AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], 2, 50 + sMonSkillsPrinterXpos->spDStr, 61, sLevelNickTextColors[7], TEXT_SPEED_FF, sMonSummaryScreen->summary.statValueStrBufs[PSS_STAT_SPD]);
         break;
     default:
@@ -2636,16 +2636,16 @@ static void PrintSkillsPage(void)
     }
     switch(nature) // speStr
     {
-    case NATURE_CALM:
-    case NATURE_GENTLE:
-    case NATURE_SASSY:
-    case NATURE_CAREFUL:
+    case NATURE_TIMID:
+    case NATURE_HASTY:
+    case NATURE_JOLLY:
+    case NATURE_NAIVE:
         AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], 2, 50 + sMonSkillsPrinterXpos->speStr, 74, sLevelNickTextColors[6], TEXT_SPEED_FF, sMonSummaryScreen->summary.statValueStrBufs[PSS_STAT_SPE]);
         break;
-    case NATURE_NAUGHTY:
-    case NATURE_LAX:
-    case NATURE_NAIVE:
-    case NATURE_RASH:
+    case NATURE_BRAVE:
+    case NATURE_RELAXED:
+    case NATURE_QUIET:
+    case NATURE_SASSY:
         AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], 2, 50 + sMonSkillsPrinterXpos->speStr, 74, sLevelNickTextColors[7], TEXT_SPEED_FF, sMonSummaryScreen->summary.statValueStrBufs[PSS_STAT_SPE]);
         break;
     default:
