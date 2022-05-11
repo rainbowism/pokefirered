@@ -764,7 +764,7 @@ void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
     SetDefaultFlashLevel();
     Overworld_ClearSavedMusic();
     RunOnTransitionMapScript();
-    TryRegenerateRenewableHiddenItems();
+    // TryRegenerateRenewableHiddenItems();
     InitMap();
     CopySecondaryTilesetToVramUsingHeap(gMapHeader.mapLayout);
     LoadSecondaryTilesetPalette(gMapHeader.mapLayout);
@@ -801,7 +801,7 @@ static void mli0_load_map(bool32 a1)
     SetDefaultFlashLevel();
     Overworld_ClearSavedMusic();
     RunOnTransitionMapScript();
-    TryRegenerateRenewableHiddenItems();
+    // TryRegenerateRenewableHiddenItems();
     UpdateLocationHistoryForRoamer();
     RoamerMoveToOtherLocationSet();
     sub_8110920();
