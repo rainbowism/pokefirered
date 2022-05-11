@@ -519,7 +519,7 @@ PalletTown_ProfessorOaksLab_EventScript_EndRivalBattle:: @ 81694C2
 	removeobject LOCALID_RIVAL
 	playse SE_EXIT
 	fadedefaultbgm
-	setvar VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 2
+	setvar VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 4
 	setvar VAR_MAP_SCENE_VIRIDIAN_CITY_MART, 1
 	setflag FLAG_BEAT_RIVAL_IN_OAKS_LAB
 	releaseall
