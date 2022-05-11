@@ -560,22 +560,8 @@ void IncrementRenewableHiddenItemStepCounter(void)
 
 void TryRegenerateRenewableHiddenItems(void)
 {
-    u8 i;
-    u8 found_map = 0xFF;
-    for (i = 0; i < 15; i++)
-    {
-        if (sRenewableHiddenItems[i].mapGroup == gSaveBlock1Ptr->location.mapGroup && sRenewableHiddenItems[i].mapNum == gSaveBlock1Ptr->location.mapNum)
-            found_map = i;
-    }
-
-    if (found_map == 0xFF)
-        return;
-    if (VarGet(VAR_RENEWABLE_ITEM_STEP_COUNTER) >= 1500)
-    {
-        VarSet(VAR_RENEWABLE_ITEM_STEP_COUNTER, 0);
-        SetAllRenewableItemFlags();
-        SampleRenewableItemFlags();
-    }
+    SetAllRenewableItemFlags();
+    SampleRenewableItemFlags();
 }
 
 static void SampleRenewableItemFlags(void)

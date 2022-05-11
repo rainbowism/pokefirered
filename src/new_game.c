@@ -144,8 +144,7 @@ void NewGameInitData(void)
     UnionRoomChat_InitializeRegisteredTexts();
     ResetMiniGamesResults();
     InitMEventData();
-    SetAllRenewableItemFlags();
-    SampleRenewableItemFlags();
+    TryRegenerateRenewableHiddenItems();
     WarpToPlayersRoom();
     ScriptContext2_RunNewScript(EventScript_ResetAllMapFlags);
     StringCopy(gSaveBlock1Ptr->rivalName, rivalName);
