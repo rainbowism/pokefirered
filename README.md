@@ -13,6 +13,7 @@ Balance:
     * Subsequent faints grant no exp or EVs.
     * Subsequent catches immediately break out.
   Locked into gyms until you earn the badge.
+  HMs become single-use.
   Trainers only reward 5 Pokedollars.
   Bosses have significantly raised prize money.
   Reduce sell prices by 5x.
