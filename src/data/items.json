@@ -387,7 +387,7 @@
     {
       "english": "REVIVE",
       "itemId": "ITEM_REVIVE",
-      "price": 1500,
+      "price": 16000,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A medicine that revives a fainted\\nPOKéMON, restoring HP by half the\\nmaximum amount.",
@@ -403,7 +403,7 @@
     {
       "english": "MAX REVIVE",
       "itemId": "ITEM_MAX_REVIVE",
-      "price": 4000,
+      "price": 16000,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A medicine that revives a fainted\\nPOKéMON, restoring HP fully.",
