@@ -452,7 +452,7 @@ const struct TrainerMoney gTrainerMoneyTable[] =
 {
     // TWEAK: prize money only comes from bosses/important events
     { TRAINER_CLASS_LEADER, 40 }, // 25
-    { TRAINER_CLASS_ELITE_FOUR, 40 }, // 25
+    { TRAINER_CLASS_ELITE_FOUR, 0 }, // 25
     { TRAINER_CLASS_PKMN_PROF, 40 }, // 25
     { TRAINER_CLASS_RIVAL_EARLY, 15 }, // 4
     { TRAINER_CLASS_RIVAL_LATE, 25 }, // 9
