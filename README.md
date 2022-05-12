@@ -14,9 +14,12 @@ Balance:
     * Subsequent catches immediately break out.
   Trainers only reward 5 Pokedollars.
   Bosses have significantly raised prize money.
+  Reduce sell prices by 5x.
+  Raise Revive and Max Revive price to 16000.
   Remove Celadon Department X Items store.
   Remove Game Corner machines using/giving coins.
   Remove Move Deleter.
+  Remove Vs. Seeker.
 
 Combat:
   Fainted Pokemon can't be healed until they are revived.
@@ -41,7 +44,6 @@ Misc:
   Renewable hidden items generate on new game rather than every 1500 steps.
   Flatten wild encounter chances, no more rare Pokemon slots.
   Remove Sevii Islands.
-  Remove Vs. Seeker.
 ```
 
 ## Tweaks/QoL
