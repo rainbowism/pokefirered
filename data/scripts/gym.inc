@@ -1,8 +1,9 @@
 Gym_EventScript_MissingBadgeTrigger::
-    lock
+    lockall
 	msgbox Text_GymNotDoneYet, MSGBOX_SIGN
 	applymovement OBJ_EVENT_ID_PLAYER, Gym_EventScript_MoveUp
-    release
+	waitmovement 0
+    releaseall
 	end
 
 Gym_EventScript_MoveUp::
