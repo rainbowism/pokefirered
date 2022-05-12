@@ -995,7 +995,8 @@ static void Task_AskConfirmSaleWithAmount(u8 taskId)
 {
     s16 * data = gTasks[taskId].data;
 
-    ConvertIntToDecimalStringN(gStringVar3, itemid_get_market_price(BagGetItemIdByPocketPosition(POCKET_TM_CASE, data[1])) / 2 * data[8], STR_CONV_MODE_LEFT_ALIGN, 6);
+    // TWEAK: reduce sale prices by 10 times rather than 2 times
+    ConvertIntToDecimalStringN(gStringVar3, itemid_get_market_price(BagGetItemIdByPocketPosition(POCKET_TM_CASE, data[1])) / 10 * data[8], STR_CONV_MODE_LEFT_ALIGN, 6);
     StringExpandPlaceholders(gStringVar4, gText_ICanPayThisMuch_WouldThatBeOkay);
     TMCase_PrintMessageWithFollowupTask(taskId, GetDialogBoxFontId(), gStringVar4, Task_PlaceYesNoBox);
 }
@@ -1030,7 +1031,8 @@ static void Task_InitQuantitySelectUI(u8 taskId)
     ConvertIntToDecimalStringN(gStringVar1, 1, STR_CONV_MODE_LEADING_ZEROS, 2);
     StringExpandPlaceholders(gStringVar4, gText_TimesStrVar1);
     AddTextPrinterParameterized_ColorByIndex(7, 0, gStringVar4, 4, 10, 1, 0, 0, 1);
-    SellTM_PrintQuantityAndSalePrice(1, itemid_get_market_price(BagGetItemIdByPocketPosition(POCKET_TM_CASE, data[1])) / 2 * data[8]);
+    // TWEAK: reduce sale prices by 10 times rather than 2 times
+    SellTM_PrintQuantityAndSalePrice(1, itemid_get_market_price(BagGetItemIdByPocketPosition(POCKET_TM_CASE, data[1])) / 10 * data[8]);
     HandlePrintMoneyOnHand();
     CreateTMCaseScrollIndicatorArrowPair_SellQuantitySelect();
     ScheduleBgCopyTilemapToVram(0);
@@ -1053,7 +1055,8 @@ static void Task_QuantitySelect_HandleInput(u8 taskId)
 
     if (AdjustQuantityAccordingToDPadInput(&data[8], data[2]) == 1)
     {
-        SellTM_PrintQuantityAndSalePrice(data[8], itemid_get_market_price(BagGetItemIdByPocketPosition(POCKET_TM_CASE, data[1])) / 2 * data[8]);
+    // TWEAK: reduce sale prices by 10 times rather than 2 times
+        SellTM_PrintQuantityAndSalePrice(data[8], itemid_get_market_price(BagGetItemIdByPocketPosition(POCKET_TM_CASE, data[1])) / 10 * data[8]);
     }
     else if (JOY_NEW(A_BUTTON))
     {
@@ -1088,7 +1091,8 @@ static void Task_PrintSaleConfirmedText(u8 taskId)
     PutWindowTilemap(0);
     ScheduleBgCopyTilemapToVram(0);
     CopyItemName(gSpecialVar_ItemId, gStringVar1);
-    ConvertIntToDecimalStringN(gStringVar3, itemid_get_market_price(BagGetItemIdByPocketPosition(POCKET_TM_CASE, data[1])) / 2 * data[8], STR_CONV_MODE_LEFT_ALIGN, 6);
+    // TWEAK: reduce sale prices by 10 times rather than 2 times
+    ConvertIntToDecimalStringN(gStringVar3, itemid_get_market_price(BagGetItemIdByPocketPosition(POCKET_TM_CASE, data[1])) / 10 * data[8], STR_CONV_MODE_LEFT_ALIGN, 6);
     StringExpandPlaceholders(gStringVar4, gText_TurnedOverItemsWorthYen);
     TMCase_PrintMessageWithFollowupTask(taskId, 2, gStringVar4, Task_DoSaleOfTMs);
 }
@@ -1099,7 +1103,8 @@ static void Task_DoSaleOfTMs(u8 taskId)
 
     PlaySE(SE_SHOP);
     RemoveBagItem(gSpecialVar_ItemId, data[8]);
-    AddMoney(&gSaveBlock1Ptr->money, itemid_get_market_price(gSpecialVar_ItemId) / 2 * data[8]);
+    // TWEAK: reduce sale prices by 10 times rather than 2 times
+    AddMoney(&gSaveBlock1Ptr->money, itemid_get_market_price(gSpecialVar_ItemId) / 10 * data[8]);
     RecordItemPurchase(gSpecialVar_ItemId, data[8], 2);
     DestroyListMenuTask(data[0], &sTMCaseStaticResources.scrollOffset, &sTMCaseStaticResources.selectedRow);
     TMCaseSetup_GetTMCount();

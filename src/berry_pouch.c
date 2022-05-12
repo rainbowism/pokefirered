@@ -1293,7 +1293,8 @@ static void Task_ContextMenu_Sell(u8 taskId)
 static void Task_AskSellMultiple(u8 taskId)
 {
     s16 * data = gTasks[taskId].data;
-    ConvertIntToDecimalStringN(gStringVar3, itemid_get_market_price(BagGetItemIdByPocketPosition(POCKET_BERRY_POUCH, data[1])) / 2 * data[8], STR_CONV_MODE_LEFT_ALIGN, 6);
+    // TWEAK: reduce sale prices by 10 times rather than 2 times
+    ConvertIntToDecimalStringN(gStringVar3, itemid_get_market_price(BagGetItemIdByPocketPosition(POCKET_BERRY_POUCH, data[1])) / 10 * data[8], STR_CONV_MODE_LEFT_ALIGN, 6);
     StringExpandPlaceholders(gStringVar4, gText_ICanPayThisMuch_WouldThatBeOkay);
     DisplayItemMessageInBerryPouch(taskId, GetDialogBoxFontId(), gStringVar4, Task_SellMultiple_CreateYesNoMenu);
 }
@@ -1323,7 +1324,8 @@ static void Task_Sell_PrintSelectMultipleUI(u8 taskId)
     ConvertIntToDecimalStringN(gStringVar1, 1, STR_CONV_MODE_LEADING_ZEROS, 2);
     StringExpandPlaceholders(gStringVar4, gText_TimesStrVar1);
     BerryPouchPrint(windowId, 0, gStringVar4, 4, 10, 1, 0, 0xFF, 1);
-    SellMultiple_UpdateSellPriceDisplay(itemid_get_market_price(BagGetItemIdByPocketPosition(POCKET_BERRY_POUCH, data[1])) / 2 * data[8]);
+    // TWEAK: reduce sale prices by 10 times rather than 2 times
+    SellMultiple_UpdateSellPriceDisplay(itemid_get_market_price(BagGetItemIdByPocketPosition(POCKET_BERRY_POUCH, data[1])) / 10 * data[8]);
     PrintMoneyInWin2();
     CreateScrollIndicatorArrows_SellQuantity();
     gTasks[taskId].func = Task_Sell_SelectMultiple;
@@ -1340,7 +1342,8 @@ static void Task_Sell_SelectMultiple(u8 taskId)
     if (AdjustQuantityAccordingToDPadInput(&data[8], data[2]) == TRUE)
     {
         PrintxQuantityOnWindow(1, data[8], 2);
-        SellMultiple_UpdateSellPriceDisplay(itemid_get_market_price(BagGetItemIdByPocketPosition(POCKET_BERRY_POUCH, data[1])) / 2 * data[8]);
+        // TWEAK: reduce sale prices by 10 times rather than 2 times
+        SellMultiple_UpdateSellPriceDisplay(itemid_get_market_price(BagGetItemIdByPocketPosition(POCKET_BERRY_POUCH, data[1])) / 10 * data[8]);
     }
     else if (JOY_NEW(A_BUTTON))
     {
@@ -1373,7 +1376,8 @@ static void Task_SellYes(u8 taskId)
     PutWindowTilemap(0);
     ScheduleBgCopyTilemapToVram(0);
     CopyItemName(gSpecialVar_ItemId, gStringVar1);
-    ConvertIntToDecimalStringN(gStringVar3, itemid_get_market_price(BagGetItemIdByPocketPosition(POCKET_BERRY_POUCH, data[1])) / 2 * data[8], STR_CONV_MODE_LEFT_ALIGN, 6);
+    // TWEAK: reduce sale prices by 10 times rather than 2 times
+    ConvertIntToDecimalStringN(gStringVar3, itemid_get_market_price(BagGetItemIdByPocketPosition(POCKET_BERRY_POUCH, data[1])) / 10 * data[8], STR_CONV_MODE_LEFT_ALIGN, 6);
     StringExpandPlaceholders(gStringVar4, gText_TurnedOverItemsWorthYen);
     DisplayItemMessageInBerryPouch(taskId, 2, gStringVar4, Task_SellBerries_PlaySfxAndRemoveBerries);
 }
@@ -1383,7 +1387,8 @@ static void Task_SellBerries_PlaySfxAndRemoveBerries(u8 taskId)
     s16 * data = gTasks[taskId].data;
     PlaySE(SE_SHOP);
     RemoveBagItem(gSpecialVar_ItemId, data[8]);
-    AddMoney(&gSaveBlock1Ptr->money, itemid_get_market_price(gSpecialVar_ItemId) / 2 * data[8]);
+    // TWEAK: reduce sale prices by 10 times rather than 2 times
+    AddMoney(&gSaveBlock1Ptr->money, itemid_get_market_price(gSpecialVar_ItemId) / 10 * data[8]);
     RecordItemPurchase(gSpecialVar_ItemId, data[8], 2);
     DestroyListMenuTask(data[0], &sStaticCnt.listMenuScrollOffset, &sStaticCnt.listMenuSelectedRow);
     SortAndCountBerries();
