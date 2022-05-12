@@ -14,6 +14,7 @@ FuchsiaCity_Gym_EventScript_DefeatedKoga:: @ 816D580
 	clearflag FLAG_HIDE_FAME_CHECKER_KOGA_JOURNAL
 	setflag FLAG_DEFEATED_KOGA
 	setflag FLAG_BADGE05_GET
+	setvar VAR_MAP_BADGE05_GET, 1
 	set_gym_trainers 5
 	goto FuchsiaCity_Gym_EventScript_GiveTM06
 	end

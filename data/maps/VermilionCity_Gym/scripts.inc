@@ -219,6 +219,7 @@ VermilionCity_Gym_EventScript_DefeatedLtSurge:: @ 816B97C
 	clearflag FLAG_HIDE_FAME_CHECKER_LT_SURGE_JOURNAL
 	setflag FLAG_DEFEATED_LT_SURGE
 	setflag FLAG_BADGE03_GET
+	setvar VAR_MAP_BADGE03_GET, 1
 	set_gym_trainers 3
 	goto VermilionCity_Gym_EventScript_GiveTM34
 	end

@@ -78,7 +78,17 @@
       "dest_warp_id": 2
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 6,
+      "y": 14,
+      "elevation": 3,
+      "var": "VAR_MAP_BADGE01_GET",
+      "var_value": "0",
+      "script": "Gym_EventScript_MissingBadgeTrigger"
+    }
+  ],
   "bg_events": [
     {
       "type": "sign",

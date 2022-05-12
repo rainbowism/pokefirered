@@ -158,7 +158,7 @@
 #define VAR_MAP_SCENE_PEWTER_CITY                                              0x406C
 #define VAR_0x406D                                                             0x406D
 #define VAR_MAP_SCENE_FUCHSIA_CITY_SAFARI_ZONE_ENTRANCE                        0x406E
-#define VAR_CABLE_CLUB_STATE                                                    0x406F
+#define VAR_CABLE_CLUB_STATE                                                   0x406F
 #define VAR_MAP_SCENE_PALLET_TOWN_SIGN_LADY                                    0x4070
 #define VAR_MAP_SCENE_CINNABAR_ISLAND                                          0x4071
 #define VAR_0x4072                                                             0x4072
@@ -189,14 +189,15 @@
 #define VAR_MAP_SCENE_MT_MOON_B2F                                              0x408B
 
 
-#define VAR_0x408C                 0x408C
-#define VAR_0x408D                 0x408D
-#define VAR_0x408E                 0x408E
-#define VAR_0x408F                 0x408F
-#define VAR_0x4090                 0x4090
-#define VAR_0x4091                 0x4091
-#define VAR_0x4092                 0x4092
-#define VAR_0x4093                 0x4093
+#define VAR_MAP_BADGE01_GET       0x408C
+#define VAR_MAP_BADGE02_GET       0x408D
+#define VAR_MAP_BADGE03_GET       0x408E
+#define VAR_MAP_BADGE04_GET       0x408F
+#define VAR_MAP_BADGE05_GET       0x4090
+#define VAR_MAP_BADGE06_GET       0x4091
+#define VAR_MAP_BADGE07_GET       0x4092
+#define VAR_MAP_BADGE08_GET       0x4093
+
 #define VAR_0x4094                 0x4094
 #define VAR_0x4095                 0x4095
 #define VAR_0x4096                 0x4096

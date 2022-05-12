@@ -15,6 +15,7 @@ SaffronCity_Gym_EventScript_DefeatedSabrina:: @ 816EE0A
 	clearflag FLAG_HIDE_SAFFRON_CITY_POKECENTER_SABRINA_JOURNALS
 	setflag FLAG_DEFEATED_SABRINA
 	setflag FLAG_BADGE06_GET
+	setvar VAR_MAP_BADGE06_GET, 1
 	set_gym_trainers 6
 	goto SaffronCity_Gym_EventScript_GiveTM04
 	end
