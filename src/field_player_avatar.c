@@ -1726,7 +1726,7 @@ static bool8 Fishing3(struct Task *task)
     // Wait one second
     task->tFrameCounter++;
     if (task->tFrameCounter >= 60)
-        task->tStep++;
+        task->tStep = FISHING_GOT_BITE;
     return FALSE;
 }
 
@@ -1754,23 +1754,24 @@ static bool8 Fishing5(struct Task *task)
     static const u8 dot[] = _("·");
 
     AlignFishingAnimationFrames(&gSprites[gPlayerAvatar.spriteId]);
-    task->tFrameCounter++;
-    if (task->tFrameCounter >= 20)
-    {
-        task->tFrameCounter = 0;
-        if (task->tNumDots >= task->tDotsRequired)
-        {
-            task->tStep++;
-            if (task->tRoundsPlayed != 0)
-                task->tStep++;
-            task->tRoundsPlayed++;
-        }
-        else
-        {
-            AddTextPrinterParameterized(0, 2, dot, task->tNumDots * 12, 1, 0, NULL);
-            task->tNumDots++;
-        }
-    }
+    task->tStep++;
+    // task->tFrameCounter++;
+    // if (task->tFrameCounter >= 20)
+    // {
+    //     task->tFrameCounter = 0;
+    //     if (task->tNumDots >= task->tDotsRequired)
+    //     {
+    //         task->tStep++;
+    //         if (task->tRoundsPlayed != 0)
+    //             task->tStep++;
+    //         task->tRoundsPlayed++;
+    //     }
+    //     else
+    //     {
+    //         AddTextPrinterParameterized(0, 2, dot, task->tNumDots * 12, 1, 0, NULL);
+    //         task->tNumDots++;
+    //     }
+    // }
     return FALSE;
 }
 
@@ -1783,7 +1784,7 @@ static bool8 Fishing6(struct Task *task)
     task->tStep++;
     bite = FALSE;
 
-    if (!DoesCurrentMapHaveFishingMons() || Random() & 1)
+    if (!DoesCurrentMapHaveFishingMons())
     {
         task->tStep = FISHING_NO_BITE;
     }
@@ -1807,11 +1808,12 @@ static bool8 Fishing8(struct Task *task)
     const s16 reelTimeouts[3] = {36, 33, 30};
 
     AlignFishingAnimationFrames(&gSprites[gPlayerAvatar.spriteId]);
-    task->tFrameCounter++;
-    if (task->tFrameCounter >= reelTimeouts[task->tFishingRod])
-        task->tStep = FISHING_GOT_AWAY;
-    else if (gMain.newKeys & A_BUTTON)
-        task->tStep++;
+    task->tStep++;
+    // task->tFrameCounter++;
+    // if (task->tFrameCounter >= reelTimeouts[task->tFishingRod])
+    //     task->tStep = FISHING_GOT_AWAY;
+    // else if (gMain.newKeys & A_BUTTON)
+    //     task->tStep++;
     return FALSE;
 }
 
@@ -1827,18 +1829,18 @@ static bool8 Fishing9(struct Task *task)
 
     AlignFishingAnimationFrames(&gSprites[gPlayerAvatar.spriteId]);
     task->tStep++;
-    if (task->tRoundsPlayed < task->tMinRoundsRequired)
-    {
-        task->tStep = FISHING_START_ROUND;
-    }
-    else if (task->tRoundsPlayed < 2)
-    {
-        // probability of having to play another round
-        s16 probability = Random() % 100;
+    // if (task->tRoundsPlayed < task->tMinRoundsRequired)
+    // {
+    //     task->tStep = FISHING_START_ROUND;
+    // }
+    // else if (task->tRoundsPlayed < 2)
+    // {
+    //     // probability of having to play another round
+    //     s16 probability = Random() % 100;
 
-        if (arr[task->tFishingRod][task->tRoundsPlayed] > probability)
-            task->tStep = FISHING_START_ROUND;
-    }
+    //     if (arr[task->tFishingRod][task->tRoundsPlayed] > probability)
+    //         task->tStep = FISHING_START_ROUND;
+    // }
     return FALSE;
 }
 
